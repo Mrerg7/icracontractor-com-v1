@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://icracontractor.com/sitemap-index.xml
