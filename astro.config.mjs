@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://icracontractor.com',
   output: 'static',
-  trailingSlash: 'always',
+  trailingSlash: 'never',
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap()
