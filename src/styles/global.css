@@ -4,6 +4,7 @@
 
 body {
   background: #f8fafc;
+  overflow-x: hidden;
 }
 
 /* Glass card effect */

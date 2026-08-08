@@ -15,9 +15,10 @@ const {
   noindex = false,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteUrl = 'https://icracontractor.com';
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://icracontractor.com';
+const canonicalURL = new URL(Astro.url.pathname, `${siteUrl}/`).href;
 const siteName = 'ICRA Contractor';
+
 
 const structuredData = {
   '@context': 'https://schema.org',
