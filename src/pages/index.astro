@@ -42,13 +42,58 @@ const buyerProfiles = [
   { title: "Established Construction Companies", desc: "Add a high-margin, specialized healthcare construction arm under a clear and credible brand name.", icon: "building" },
   { title: "Strategic Domain Investors", desc: "Acquire a clean, professional .com domain with clear commercial application in a growing regulated niche.", icon: "globe" },
 ];
+
+const askingPrice = "$15,000";
+
+const faqs = [
+  {
+    q: "Is icracontractor.com available for sale?",
+    a: "Yes. icracontractor.com is exclusively available for direct acquisition. The asking price is $15,000 USD, with escrow-protected transfer and flexible transaction structures for qualified buyers.",
+  },
+  {
+    q: "What is an ICRA contractor?",
+    a: "An ICRA contractor specializes in Infection Control Risk Assessment — planning and performing construction, renovation, and maintenance inside occupied healthcare facilities while protecting patients from infection risk. The work covers Class I–IV ICRA protocols, antimicrobial barriers, negative-air and HEPA containment, pressure differential monitoring, and daily compliance documentation.",
+  },
+  {
+    q: "Why is this domain valuable for a construction company?",
+    a: "icracontractor.com is an exact-match .com that reads like a credential. It signals ICRA expertise in the first second of contact — on proposals, pre-qualification packages, job site signage, and in search results — and it targets high-intent queries such as \u201cICRA contractor\u201d and \u201cinfection control contractor\u201d.",
+  },
+  {
+    q: "How do I buy this domain safely?",
+    a: "Every transfer is completed through professional domain escrow. Your funds are held securely and only released once the domain has been transferred and verified in your registrar account. Transfers typically complete within 1–5 business days of a signed agreement.",
+  },
+  {
+    q: "Who is the ideal buyer of icracontractor.com?",
+    a: "General contractors and specialty trades launching a healthcare division, medical renovation companies, ICRA subcontractor networks, joint ventures bidding on hospital work, established construction firms adding a high-margin healthcare arm, and strategic domain investors.",
+  },
+  {
+    q: "Can I make an offer below the asking price?",
+    a: "Serious offers are considered. Submit the form on this page or email sales@desertrich.com with your offer and preferred transaction structure — escrow, installments, or a standard outright purchase.",
+  },
+  {
+    q: "Will email and a website work on this domain?",
+    a: "Yes. After transfer you control DNS for icracontractor.com, so you can point the domain at your existing site and set up @icracontractor.com email addresses (Google Workspace, Microsoft 365, or any provider) immediately.",
+  },
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
 ---
 
-<MainLayout>
+<MainLayout extraSchema={[faqSchema]}>
   <!-- ============================================ -->
   <!-- NAVBAR                                       -->
   <!-- ============================================ -->
-  <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+  <nav class="bg-white border-b border-slate-200 sticky top-0 z-50" aria-label="Primary">
     <div class="max-w-screen-2xl mx-auto">
       <div class="px-8 py-5 flex items-center justify-between">
         <div class="flex items-center gap-x-3">
@@ -75,6 +120,7 @@ const buyerProfiles = [
           <a href="#opportunity" class="text-slate-600 hover:text-slate-900 transition-colors">Opportunity</a>
           <a href="#brand" class="text-slate-600 hover:text-slate-900 transition-colors">The Brand</a>
           <a href="#why-domain" class="text-slate-600 hover:text-slate-900 transition-colors">Why This Domain</a>
+          <a href="#faq" class="text-slate-600 hover:text-slate-900 transition-colors">FAQ</a>
           <a href="#acquire" class="text-slate-600 hover:text-slate-900 transition-colors">Acquire</a>
         </div>
 
@@ -89,8 +135,8 @@ const buyerProfiles = [
           </a>
 
           <!-- Mobile menu toggle -->
-          <button class="md:hidden w-10 h-10 flex items-center justify-center text-slate-600" id="mobile-menu-btn">
-            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <button class="md:hidden w-10 h-10 flex items-center justify-center text-slate-600" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
           </button>
@@ -104,6 +150,7 @@ const buyerProfiles = [
         <a href="#opportunity" class="py-1.5 text-slate-700">Opportunity</a>
         <a href="#brand" class="py-1.5 text-slate-700">The Brand</a>
         <a href="#why-domain" class="py-1.5 text-slate-700">Why This Domain</a>
+        <a href="#faq" class="py-1.5 text-slate-700">FAQ</a>
         <a href="#acquire" class="py-1.5 text-slate-700">Acquire</a>
         <div class="pt-3 border-t">
           <a href={mailtoLink}
@@ -113,6 +160,7 @@ const buyerProfiles = [
     </div>
   </nav>
 
+  <main id="main">
   <!-- ============================================ -->
   <!-- HERO                                         -->
   <!-- ============================================ -->
@@ -141,7 +189,7 @@ const buyerProfiles = [
           <a href={mailtoLink}
              class="group inline-flex items-center justify-center gap-x-3 px-8 py-4 bg-white text-teal-700 font-semibold text-lg rounded-3xl hover:bg-teal-50 active:bg-white transition-all shadow-xl shadow-black/10">
             <span>Secure This Domain</span>
-            <svg class="w-5 h-5 group-active:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <svg class="w-5 h-5 group-active:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
 
           <a href="#opportunity"
@@ -150,9 +198,13 @@ const buyerProfiles = [
           </a>
         </div>
 
+        <p class="mt-5 text-sm text-teal-200/90">
+          Asking price: <strong class="text-white font-semibold">{askingPrice} USD</strong> · Escrow-protected transfer · Confidential inquiries
+        </p>
+
         <!-- Trust signals -->
-        <div class="mt-8 flex items-center gap-x-6 text-sm">
-          <div class="flex items-center -space-x-1">
+        <div class="mt-6 flex items-center gap-x-6 text-sm">
+          <div class="flex items-center -space-x-1" aria-hidden="true">
             <div class="w-6 h-6 bg-white/20 rounded-full border border-white/40"></div>
             <div class="w-6 h-6 bg-white/20 rounded-full border border-white/40"></div>
             <div class="w-6 h-6 bg-white/20 rounded-full border border-white/40"></div>
@@ -345,37 +397,143 @@ const buyerProfiles = [
   </section>
 
   <!-- ============================================ -->
-  <!-- FINAL CTA / ACQUIRE                          -->
+  <!-- FAQ                                          -->
   <!-- ============================================ -->
-  <section id="acquire" class="max-w-screen-2xl mx-auto px-8 py-20">
-    <div class="max-w-2xl mx-auto text-center">
-      <div class="inline-block premium-badge mb-4 text-sm">
-        <svg class="w-2.5 h-2.5 inline mr-1.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        EXCLUSIVE OPPORTUNITY
-      </div>
+  <section id="faq" class="bg-white border-t border-slate-200 py-16">
+    <div class="max-w-3xl mx-auto px-8">
+      <div class="uppercase tracking-[2px] text-icra-teal text-xs font-semibold mb-2">COMMON QUESTIONS</div>
+      <h2 class="text-4xl font-bold tracking-tighter leading-tight mb-8">icracontractor.com — acquisition &amp; ICRA FAQ</h2>
 
-      <h2 class="text-5xl tracking-tighter font-semibold mb-4">Own the direct brand for the ICRA Contractor.</h2>
-      <p class="text-xl text-slate-600 max-w-md mx-auto">icracontractor.com is available for acquisition. Secure the professional .com that instantly positions your company as the specialized ICRA contractor hospitals and GCs can trust.</p>
-
-      <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href={mailtoLink}
-           class="w-full sm:w-auto px-10 py-4 bg-icra-teal hover:bg-icra-deep transition-all text-white font-semibold text-lg rounded-3xl flex items-center justify-center gap-x-3 shadow-lg shadow-icra-teal/30">
-          <span>Submit Acquisition Inquiry</span>
-        </a>
-
-        <a href={mailtoLink}
-           class="w-full sm:w-auto px-8 py-4 border border-slate-300 hover:bg-slate-100 transition-all font-medium text-slate-700 rounded-3xl flex items-center justify-center gap-x-2">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          <span>Email {contactEmail}</span>
-        </a>
-      </div>
-
-      <div class="mt-8 text-xs text-slate-500 flex items-center justify-center gap-x-2">
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-        <span>Confidential inquiries • Professional escrow transfer • Fast closing available</span>
+      <div class="flex flex-col gap-3">
+        {faqs.map((item) => (
+          <details class="group border border-slate-200 rounded-2xl bg-slate-50 overflow-hidden">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none px-6 py-4 font-semibold text-slate-800 hover:bg-slate-100 transition-colors">
+              <span class="text-base">{item.q}</span>
+              <svg class="w-4 h-4 flex-shrink-0 text-icra-teal transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            </summary>
+            <div class="px-6 pb-5 -mt-1 text-sm text-slate-600 leading-relaxed">
+              {item.a}
+            </div>
+          </details>
+        ))}
       </div>
     </div>
   </section>
+
+  <!-- ============================================ -->
+  <!-- FINAL CTA / ACQUIRE                          -->
+  <!-- ============================================ -->
+  <section id="acquire" class="max-w-screen-2xl mx-auto px-8 py-20">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <!-- Left: pitch -->
+      <div>
+        <div class="inline-block premium-badge mb-4 text-sm">
+          <svg class="w-2.5 h-2.5 inline mr-1.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          EXCLUSIVE OPPORTUNITY
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl tracking-tighter font-semibold mb-4">Own the direct brand for the ICRA Contractor.</h2>
+        <p class="text-lg text-slate-600 max-w-xl">icracontractor.com is available for acquisition. Secure the professional .com that instantly positions your company as the specialized ICRA contractor hospitals and GCs can trust.</p>
+
+        <div class="mt-6 inline-flex items-center gap-3 bg-icra-teal-pale border border-icra-teal/20 rounded-full px-5 py-2.5">
+          <span class="text-sm text-slate-600">Asking price</span>
+          <span class="text-xl font-bold text-icra-deep">{askingPrice} USD</span>
+        </div>
+
+        <ul class="mt-7 space-y-3 text-sm text-slate-600">
+          <li class="flex items-start gap-x-3">
+            <svg class="w-4 h-4 mt-0.5 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>Professional escrow — funds released only after verified transfer</span>
+          </li>
+          <li class="flex items-start gap-x-3">
+            <svg class="w-4 h-4 mt-0.5 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>Typical close in 1–5 business days after agreement</span>
+          </li>
+          <li class="flex items-start gap-x-3">
+            <svg class="w-4 h-4 mt-0.5 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>Confidential handling — flexible transaction structures available</span>
+          </li>
+        </ul>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href={mailtoLink}
+             class="px-8 py-4 bg-icra-teal hover:bg-icra-deep transition-all text-white font-semibold rounded-3xl flex items-center justify-center gap-x-3 shadow-lg shadow-icra-teal/30">
+            <span>Email an Offer</span>
+          </a>
+
+          <a href={mailtoLink}
+             class="px-8 py-4 border border-slate-300 hover:bg-slate-100 transition-all font-medium text-slate-700 rounded-3xl flex items-center justify-center gap-x-2">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>{contactEmail}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: inquiry form -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-7 sm:p-8 shadow-xl shadow-slate-900/5">
+        <h3 class="text-xl font-bold tracking-tight mb-1">Submit an acquisition inquiry</h3>
+        <p class="text-sm text-slate-500 mb-6">Qualified inquiries receive a response with transfer details and escrow instructions.</p>
+
+        <form id="inquiry-form" action="https://formsubmit.co/sales@desertrich.com" method="POST" class="flex flex-col gap-4">
+          <input type="hidden" name="_subject" value="icracontractor.com Acquisition Inquiry" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://icracontractor.com/#acquire" />
+          <input type="hidden" name="Domain" value="icracontractor.com" />
+          <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="inq-name" class="block text-xs font-semibold text-slate-600 mb-1.5">Name *</label>
+              <input id="inq-name" type="text" name="Name" required autocomplete="name"
+                 class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-icra-teal focus:ring-2 focus:ring-icra-teal/20 outline-none text-sm transition-all"
+                 placeholder="Your name" />
+            </div>
+            <div>
+              <label for="inq-email" class="block text-xs font-semibold text-slate-600 mb-1.5">Email *</label>
+              <input id="inq-email" type="email" name="Email" required autocomplete="email"
+                 class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-icra-teal focus:ring-2 focus:ring-icra-teal/20 outline-none text-sm transition-all"
+                 placeholder="you@company.com" />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="inq-company" class="block text-xs font-semibold text-slate-600 mb-1.5">Company</label>
+              <input id="inq-company" type="text" name="Company" autocomplete="organization"
+                 class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-icra-teal focus:ring-2 focus:ring-icra-teal/20 outline-none text-sm transition-all"
+                 placeholder="Company name" />
+            </div>
+            <div>
+              <label for="inq-offer" class="block text-xs font-semibold text-slate-600 mb-1.5">Offer (USD)</label>
+              <input id="inq-offer" type="text" name="Offer" inputmode="numeric"
+                 class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-icra-teal focus:ring-2 focus:ring-icra-teal/20 outline-none text-sm transition-all"
+                 placeholder="e.g. 15000" />
+            </div>
+          </div>
+
+          <div>
+            <label for="inq-message" class="block text-xs font-semibold text-slate-600 mb-1.5">Message</label>
+            <textarea id="inq-message" name="Message" rows="4"
+               class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-icra-teal focus:ring-2 focus:ring-icra-teal/20 outline-none text-sm transition-all resize-y"
+               placeholder="Timeline, preferred transaction structure, or questions…"></textarea>
+          </div>
+
+          <button type="submit" id="inquiry-submit"
+             class="w-full py-3.5 bg-icra-teal hover:bg-icra-deep transition-all text-white font-semibold rounded-full text-sm shadow-lg shadow-icra-teal/25 active:scale-[0.985]">
+            Send Acquisition Inquiry
+          </button>
+
+          <p id="form-status" role="status" aria-live="polite" class="text-sm text-center min-h-[1.25rem] text-slate-600"></p>
+
+          <p class="text-xs text-slate-400 text-center -mt-1">
+            Or email <a href={mailtoLink} class="text-icra-teal hover:underline font-medium">{contactEmail}</a> directly.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+  </main>
 
   <!-- ============================================ -->
   <!-- STICKY MOBILE CTA                            -->
@@ -424,7 +582,7 @@ const buyerProfiles = [
             technologies are based on publicly available information as of the date shown and are subject to change.
           </p>
           <p class="text-[11px] sm:text-xs text-white/25 font-mono">
-            &copy; {new Date().getFullYear()} icracontractor.com — Built with Astro + Cloudflare Pages
+            &copy; {new Date().getFullYear()} icracontractor.com — Built with Astro + Cloudflare Workers
           </p>
         </div>
       </div>
@@ -438,29 +596,65 @@ const buyerProfiles = [
   const mobileMenu = document.getElementById('mobile-menu');
   if (menuBtn && mobileMenu) {
     menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
     });
     // Close mobile menu when a link is clicked
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
       });
     });
   }
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
+    anchor.addEventListener('click', function(this: HTMLAnchorElement, e: Event) {
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
         const navHeight = 72;
         const elementPosition = target.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - navHeight;
         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        if (history.replaceState) history.replaceState(null, '', href);
       }
     });
   });
+
+  // Inquiry form — AJAX submit with no-JS fallback to native FormSubmit POST
+  const inquiryForm = document.getElementById('inquiry-form') as HTMLFormElement | null;
+  const inquiryBtn = document.getElementById('inquiry-submit') as HTMLButtonElement | null;
+  const formStatus = document.getElementById('form-status');
+  if (inquiryForm && inquiryBtn && formStatus) {
+    inquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (inquiryForm.querySelector('input[name="_honey"]')?.value) return;
+      inquiryBtn.disabled = true;
+      inquiryBtn.textContent = 'Sending…';
+      formStatus.textContent = '';
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/sales@desertrich.com', {
+          method: 'POST',
+          body: new FormData(inquiryForm),
+          headers: { Accept: 'application/json' },
+        });
+        if (!res.ok) throw new Error('request failed');
+        inquiryForm.reset();
+        formStatus.textContent = 'Thank you — your inquiry has been sent. Expect a reply shortly.';
+        formStatus.classList.add('text-emerald-600');
+      } catch {
+        formStatus.textContent = 'Sending failed — please email sales@desertrich.com directly.';
+        formStatus.classList.add('text-red-500');
+      } finally {
+        inquiryBtn.disabled = false;
+        inquiryBtn.textContent = 'Send Acquisition Inquiry';
+      }
+    });
+  }
 
   console.log('%c[icracontractor.com] Domain acquisition landing page initialized.', 'color:#0D9488; font-size:9px');
 </script>

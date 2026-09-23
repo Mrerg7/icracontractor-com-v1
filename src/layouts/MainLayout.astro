@@ -6,19 +6,21 @@ export interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  extraSchema?: Record<string, unknown>[];
 }
 
 const {
-  title = "icracontractor.com — Premium Domain for the ICRA Contractor | Healthcare Construction",
-  description = "Acquire icracontractor.com — the direct professional .com brand for specialized ICRA contractors. The perfect name for companies that bid and execute healthcare construction and renovation projects with deep infection control expertise.",
+  title = "icracontractor.com — Premium ICRA Contractor .com Domain for Sale",
+  description = "Acquire icracontractor.com — the exact-match .com for ICRA contractors. Listed at $15,000 with escrow-protected transfer for healthcare construction firms.",
   image = "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/ccb64e0e-1b98-4243-8d2d-d111a277bb00/public",
   noindex = false,
+  extraSchema = [],
 } = Astro.props;
 
 const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://icracontractor.com';
 const canonicalURL = new URL(Astro.url.pathname, `${siteUrl}/`).href;
 const siteName = 'ICRA Contractor';
-
+const imageAlt = 'icracontractor.com — premium .com domain for the ICRA contractor';
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -26,7 +28,7 @@ const structuredData = {
     {
       '@type': 'WebSite',
       '@id': `${siteUrl}/#website`,
-      url: siteUrl,
+      url: `${siteUrl}/`,
       name: siteName,
       description,
       inLanguage: 'en-US',
@@ -42,15 +44,16 @@ const structuredData = {
       primaryImageOfPage: {
         '@type': 'ImageObject',
         url: image,
+        caption: imageAlt,
       },
     },
     {
       '@type': 'Product',
-      name: `${siteName} — Premium Domain Name`,
+      name: 'icracontractor.com — Premium Domain Name',
       description: 'The direct, authoritative .com domain for ICRA-specialized healthcare construction contractors. Category-defining digital real estate for the infection control construction niche.',
-      url: siteUrl,
-      image: image,
-      category: 'Domain Name',
+      url: `${siteUrl}/`,
+      image,
+      category: 'Domain Names',
       brand: {
         '@type': 'Brand',
         name: siteName,
@@ -61,13 +64,7 @@ const structuredData = {
         availability: 'https://schema.org/InStock',
         priceCurrency: 'USD',
         price: '15000.00',
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          price: '15000.00',
-          priceCurrency: 'USD',
-          minPrice: '15000.00',
-          maxPrice: '95000.00',
-        },
+        itemCondition: 'https://schema.org/NewCondition',
         seller: {
           '@type': 'Organization',
           name: 'Desert Rich',
@@ -109,26 +106,8 @@ const structuredData = {
           },
         },
       },
-      review: {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5',
-        },
-        author: {
-          '@type': 'Organization',
-          name: 'Desert Rich',
-        },
-      },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '5',
-        bestRating: '5',
-        ratingCount: 1,
-        reviewCount: 1,
-      },
     },
+    ...extraSchema,
   ],
 };
 ---
@@ -147,7 +126,9 @@ const structuredData = {
   <!-- Canonical -->
   <link rel="canonical" href={canonicalURL} />
 
-  {noindex && <meta name="robots" content="noindex" />}
+  <!-- Indexing -->
+  <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1"} />
+  <meta name="theme-color" content="#0D9488" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -155,6 +136,7 @@ const structuredData = {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={image} />
+  <meta property="og:image:alt" content={imageAlt} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content={siteName} />
@@ -165,6 +147,7 @@ const structuredData = {
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={image} />
+  <meta name="twitter:image:alt" content={imageAlt} />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -175,6 +158,9 @@ const structuredData = {
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </head>
 <body class="bg-icra-surface text-slate-900 font-sans antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[60] focus:bg-white focus:text-icra-deep focus:px-4 focus:py-2 focus:rounded-full focus:shadow-lg focus:font-semibold focus:text-sm">
+    Skip to content
+  </a>
   <slot />
 </body>
 </html>
